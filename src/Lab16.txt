@@ -1,0 +1,115 @@
+Q.24.1)Suppose list is an instance of MyList, can you 
+get an iterator for list using list.iterator()?
+
+Ans: Yes
+
+Q.24.2)Can you create a list using new MyAbstractList() ?
+
+Ans: No
+
+Q.24.3)What methods in MyList are overridden in MyAbstractList? 
+
+Ans: These are the methods which can be overridden in MyAbstractList()
+ 
+	1. add(e: E): void 
+	2. isEmpty(): boolean 
+	3. size(): int 
+	4. remove(e: E): boolean
+
+Q.24.4) What are the benefits of defining both the MyList interface and the MyAbstractList class?
+
+Ans: It can improve the code quality and convenient to the User for reusing  the code.
+
+Q.24.5)  What are the limitations of the array data type?
+
+Ans: Limitations: 
+
+	1. Array size is fixed , means we can not increase or decrease its size after its creation
+	
+	2. No good support for insert and delete operations. 
+	
+	3. We can not store values in continuous memory locations using primitive data types.
+
+Q.24.6) MyArrayList is implemented using an array, and an array is a fixed-size data struc
+       -ture. Why is MyArrayList considered a dynamic data structure?
+
+Ans:  Because its storage size is not the same all time.
+
+Q.24.7)  Show the length of the array in MyArrayList after each of the following statements 
+         is executed.
+
+	1  MyArrayList<Double> list = new MyArrayList<>(); 
+	2  list.add(1.5); 
+	3  list.trimToSize(); 
+	4  list.add(3.4); 
+	5  list.add(7.4); 
+	6  list.add(17.4);
+
+Ans: After execution of statements one by one length of list is as follows:-
+	Statement     Length
+	1		16
+	2		16
+	3		1
+	4		3
+	5		3
+	6		7
+
+Q.24.8) What is wrong if lines 11–12 in Listing 24.3, MyArrayList.java,
+
+	for (int i = 0; i < objects.length; i++)       
+		add(objects[i]);
+
+	are replaced by
+
+	super(objects);
+
+	or
+
+	data = objects; 
+	size = objects.length;
+
+Ans: When constructing the Array List using new ArrayList(object) the super class 
+     constructor is invoked first to add element in objects to data. Data is not 
+     initialized yet. Data will be initialized after the body of the superclass 
+     constructor is executed.So you will get error of the NullPointerException when
+     attempting to add the element to the data.
+
+Q.24.9)  If you change the code in line 33 in Listing 24.3, MyArrayList.java, from
+
+	E[] newData = (E[])(new Object[size * 2 + 1]);
+
+	to
+
+	E[] newData = (E[])(new Object[size * 2]);
+
+	the program is incorrect. Can you find the reason? 
+
+Ans: It will show an error message, because the empty array list is trimmed, then its 
+     size is zero. Adding new element to empty array cause an ArrayIndexOutOfBound Exception.
+
+Q.24.10)Will the MyArrayList class have memory leak if the following code in line 41 is 
+        deleted?
+
+        data = (E[])new Object[INITIAL_CAPACITY];
+
+Ans: Yes
+
+Q.24.11)  The get(index) method invokes the checkIndex(index) method (lines 59–63 
+          in Listing 24.3) to throw an IndexOutOfBoundsException if the index is 
+          out of bounds. Suppose the add(index, e) is implemented as follows:
+
+	  public void add(int index, E e) 
+	  {  
+             checkIndex(index);
+	   // Same as lines 17-27 in Listing 24.3 MyArrayList.java 
+	  }
+
+          What will happen if you run the following code?
+          MyArrayList<String> list = new MyArrayList<>(); list.add("New York");
+
+
+Ans:  It will checkIndex will gonna check the index if index is less than 0 or greater than or equal size 
+      of list the it will throw IndexOutOfBoundsException exception and If we run the List.add("New York ")
+      than it will add the "New York" beginning of the list.
+
+
